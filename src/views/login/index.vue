@@ -30,16 +30,23 @@ export default {
   data () {
     return {
       user: {
-        mobile: '',
-        code: ''
+        mobile: '18801185985',
+        code: '123456'
       }
     }
   },
   methods: {
     async handLogin () {
       try {
-        const res = await login(this.user)
-        console.log(res)
+        const data = await login(this.user)
+        this.$store.commit('setUser', data)
+        /**
+         * 這裡先簡單粗暴跳轉的首頁
+         * 真實的業務處理成跳轉到之前過來的頁面
+         */
+        this.$router.push({
+          name: 'home'
+        })
       } catch (err) {
         console.log(err)
         console.log('登录失败')
