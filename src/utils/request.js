@@ -11,7 +11,7 @@ import axios from 'axios'
 const request = axios.create({
   baseURL: 'http://toutiao.course.itcast.cn'
 })
-// 打开axios的githob文档
+// 打开axios的github文档
 // Add a request interceptor
 request.interceptors.request.use(function (config) {
   // Do something before request is sent
