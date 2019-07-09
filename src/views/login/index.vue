@@ -17,6 +17,8 @@
       <!-- 底部 -->
       <div class="login-btn-box">
         <van-button type="info" class="login-btn"
+        :loading="loginLoading"
+        loading-text="登录中..."
         @click.prevent="handLogin">登录</van-button>
       </div>
     </from>
@@ -29,10 +31,11 @@ export default {
   name: 'LoginIndex',
   data () {
     return {
-      user: {
+      user: { // 提交登录的表单数据
         mobile: '18801185985',
         code: '123456'
-      }
+      },
+      loginLoading: false // 控制登录按钮的loading状态
     }
   },
   methods: {
@@ -44,13 +47,14 @@ export default {
          * 這裡先簡單粗暴跳轉的首頁
          * 真實的業務處理成跳轉到之前過來的頁面
          */
-        this.$router.push({
-          name: 'home'
-        })
+        // this.$router.push({
+        //   name: 'home'
+        // })
       } catch (err) {
         console.log(err)
         console.log('登录失败')
       }
+      this.loginLoading = false
     }
   }
 }
